@@ -24,9 +24,8 @@
     - price
     - sell_quantity
 
-- Admin (admin stuff)
-- Auth (secure routes)
-- Db (db class)
-- Login (login, register)
-- Product (Product CRUD)
-- Routes (Keep the routes)
+- Admin     (admin stuff)
+- Database  (db class)
+- Product   (Product CRUD)
+- Routes    (Keep the routes)
+- User      (login, register)
