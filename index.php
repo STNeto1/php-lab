@@ -1,0 +1,48 @@
+<?php
+session_start();
+
+include "includes/header.php";
+
+// include de classes
+// include "classes/Routes.php";
+require_once "classes/Product.php";
+
+// (new Routes())->is_logged();
+
+// instâncias de classes
+$obProduct = new Product();
+
+
+$products = $obProduct->fetchAll();
+
+
+?>
+
+<div class="container m-5">
+  <table class="table table-striped">
+    <thead>
+      <th>ID</th>
+      <th>Title</th>
+      <th>Price</th>
+      <th>Quantity</th>
+      <th>Add to Cart</th>
+    </thead>
+    <tbody>
+      <?php foreach ($products as $prod) : ?>
+        <tr>
+          <td><?= $prod['id'] ?></td>
+          <td><?= $prod['title'] ?></td>
+          <td><?= $prod['price'] ?></td>
+          <td><?= $prod['quantity'] ?></td>
+          <td>
+            <form action="classes/Routes.php" method="post">
+              <input type="hidden" name="add_to_cart">
+              <input type="hidden" name="product_id" value="<?= $prod['id'] ?>">
+              <button type="submit" class="btn btn-sm btn-success">Add</button>
+            </form>
+          </td>
+        </tr>
+      <?php endforeach; ?>
+    </tbody>
+  </table>
+</div>
