@@ -25,6 +25,7 @@
     - sell_quantity
 
 - Admin     (admin stuff)
+- Cart      (Control the cart)
 - Database  (db class)
 - Product   (Product CRUD)
 - Routes    (Keep the routes)
