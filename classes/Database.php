@@ -4,8 +4,8 @@ class Database
 {
   private string $host = "localhost";
   private string $dbName = "lab";
-  private string $username = "stneto";
-  private string $password = "neto";
+  private string $username = "root";
+  private string $password = "";
 
   public PDO $conn;
 

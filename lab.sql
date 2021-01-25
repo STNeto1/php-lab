@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.9.5deb2
+-- version 5.0.4
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost:3306
--- Tempo de geração: 22/01/2021 às 22:28
--- Versão do servidor: 8.0.22-0ubuntu0.20.04.3
--- Versão do PHP: 7.4.3
+-- Host: 127.0.0.1
+-- Tempo de geração: 25-Jan-2021 às 21:06
+-- Versão do servidor: 10.4.17-MariaDB
+-- versão do PHP: 8.0.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -25,72 +24,83 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `account`
+-- Estrutura da tabela `categories`
 --
 
-CREATE TABLE `account` (
-  `id` int NOT NULL,
-  `name` varchar(255) NOT NULL,
-  `email` varchar(255) NOT NULL,
-  `password` varchar(255) NOT NULL
+CREATE TABLE `categories` (
+  `id` int(11) NOT NULL,
+  `NAME` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Extraindo dados da tabela `categories`
+--
+
+INSERT INTO `categories` (`id`, `NAME`) VALUES
+(1, 'Categoria 1'),
+(2, 'Categoria 2'),
+(3, 'Categoria 3');
 
 -- --------------------------------------------------------
 
 --
--- Estrutura para tabela `product`
+-- Estrutura da tabela `products`
 --
 
-CREATE TABLE `product` (
-  `id` int NOT NULL,
-  `title` varchar(255) NOT NULL,
-  `price` int NOT NULL,
-  `quantity` int NOT NULL
+CREATE TABLE `products` (
+  `id` int(11) NOT NULL,
+  `NAME` varchar(255) DEFAULT NULL,
+  `qty` int(11) DEFAULT NULL,
+  `cat_id` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Despejando dados para a tabela `product`
+-- Extraindo dados da tabela `products`
 --
 
-INSERT INTO `product` (`id`, `title`, `price`, `quantity`) VALUES
-(1, 'Produto 1', 10, 10),
-(2, 'Produto 2', 10, 10),
-(3, 'Produto 3', 10, 10),
-(4, 'Produto 4', 10, 10),
-(5, 'Produto 5', 10, 10),
-(6, 'Produto 6', 10, 10);
+INSERT INTO `products` (`id`, `NAME`, `qty`, `cat_id`) VALUES
+(1, 'Produto 1', 10, 1),
+(2, 'Produto 2', 20, 2),
+(3, 'Produto 3', 30, 3),
+(4, 'Produto 4', 30, 3),
+(5, 'Produto 5', 10, 2),
+(6, 'Produto 6', 20, 1),
+(7, 'Produto 7', 20, 1),
+(8, 'Produto 8', 30, 2),
+(9, 'Produto 9', 10, 3),
+(10, 'Produto x', 100, 2);
 
 --
--- Índices de tabelas apagadas
+-- Índices para tabelas despejadas
 --
 
 --
--- Índices de tabela `account`
+-- Índices para tabela `categories`
 --
-ALTER TABLE `account`
+ALTER TABLE `categories`
   ADD PRIMARY KEY (`id`);
 
 --
--- Índices de tabela `product`
+-- Índices para tabela `products`
 --
-ALTER TABLE `product`
+ALTER TABLE `products`
   ADD PRIMARY KEY (`id`);
 
 --
--- AUTO_INCREMENT de tabelas apagadas
+-- AUTO_INCREMENT de tabelas despejadas
 --
 
 --
--- AUTO_INCREMENT de tabela `account`
+-- AUTO_INCREMENT de tabela `categories`
 --
-ALTER TABLE `account`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT;
+ALTER TABLE `categories`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT de tabela `product`
+-- AUTO_INCREMENT de tabela `products`
 --
-ALTER TABLE `product`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+ALTER TABLE `products`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

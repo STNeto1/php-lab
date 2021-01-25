@@ -13,7 +13,7 @@ require_once "classes/Product.php";
 $obProduct = new Product();
 
 
-$products = $obProduct->fetchAll();
+$products = $obProduct->fetchAllWithCategories();
 
 
 ?>
@@ -22,25 +22,29 @@ $products = $obProduct->fetchAll();
   <table class="table table-striped">
     <thead>
       <th>ID</th>
-      <th>Title</th>
-      <th>Price</th>
+      <th>Name</th>
       <th>Quantity</th>
-      <th>Add to Cart</th>
+      <th>Category</th>
+      <!-- <th>Add to Cart</th> -->
     </thead>
     <tbody>
       <?php foreach ($products as $prod) : ?>
         <tr>
-          <td><?= $prod['id'] ?></td>
-          <td><?= $prod['title'] ?></td>
-          <td><?= $prod['price'] ?></td>
-          <td><?= $prod['quantity'] ?></td>
+          <td><?= $prod['prod_id'] ?></td>
+          <td><?= $prod['prod_name'] ?></td>
+          <td><?= $prod['qty'] ?></td>
           <td>
+            <a href="category.php?cid=<?= $prod['cat_id'] ?>">
+              <?= $prod['cat_name'] ?>
+            </a>
+          </td>
+          <!-- <td>
             <form action="classes/Routes.php" method="post">
               <input type="hidden" name="add_to_cart">
               <input type="hidden" name="product_id" value="<?= $prod['id'] ?>">
               <button type="submit" class="btn btn-sm btn-success">Add</button>
             </form>
-          </td>
+          </td> -->
         </tr>
       <?php endforeach; ?>
     </tbody>
